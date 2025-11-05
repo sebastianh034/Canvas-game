@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    cursor: none;
+    font-family: Arial, sans-serif;
+}
+
+#score {
+    position: fixed;
+    top: 50px;
+    left: 10px;
+    font-size: 24px;
+    color: #fff;
+    z-index: 4; 
+}
+
+#shot {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    color: #fff;
+    z-index: 4;
+}
+
+#timer {
+    position: fixed;
+    top: 90px;
+    left: 10px;
+    font-size: 24px;
+    color: #fff;
+    z-index: 4;
+}
+
+.background-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://media.istockphoto.com/id/1254441791/vector/landscape-savanna-background-with-clear-sky-yellow-grass-and-tree-flat-vector-illustration.jpg?s=612x612&w=0&k=20&c=46eHni2fKi-Ra86KaPttSWkFZelkFYjMuEUnX7UftHU=');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.black-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    z-index: 2;
+}
+
+.crosshair {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.crosshair::before,
+.crosshair::after {
+    content: '';
+    position: absolute;
+    background: #000;
+}
+
+.crosshair::before {
+    width: 60px;
+    height: 2px;
+    top: -1px;
+    left: -30px;
+}
+
+.crosshair::after {
+    width: 2px;
+    height: 60px;
+    top: -30px;
+    left: -1px;
+}
+
+.center-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 3px;
+    background: #000;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.target {
+    position: absolute;
+    z-index: 1; /* under overlay but visible through the overlay's transparent mask */
+    cursor: default;
+    display: block;
+    transition: transform 120ms ease, opacity 180ms ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+#time {
+    position: fixed;
+    top: 90px;
+    left: 10px;
+    font-size: 24px;
+    color: #fff;
+    z-index: 4; 
+}
+/* round target */
+.target.circle {
+    border-radius: 50%;
+}
+
+/* square target (default) */
+.target.square {
+    border-radius: 6px;
+}
+
+/* randomize color via inline style set by JS; fallback */
+.target {
+    background: #f05a5a;
+}
+
+/* optional small hit animation (if you want to animate before removal) */
+.target.hit {
+    transform: scale(0.8);
+    opacity: 0.6;
+}
+
+.start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: default;
+}
+
+.game-title {
+    font-size: 72px;
+    color: #fff;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 50px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.start-button {
+    padding: 20px 60px;
+    font-size: 32px;
+    background: #f05a5a;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.start-button:hover {
+    background: #e04848;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.start-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.start-screen.hidden {
+    display: none;
+}
+
+.game-over-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: default;
+}
+
+.game-over-screen.hidden {
+    display: none;
+}
+
+.game-over-title {
+    font-size: 64px;
+    color: #f05a5a;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.final-score {
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+.final-score span {
+    color: #4CAF50;
+    font-size: 56px;
+}

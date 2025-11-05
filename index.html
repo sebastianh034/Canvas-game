@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunting Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="startScreen" class="start-screen">
+        <h1 class="game-title">Shooting Gallery</h1>
+        <button id="startButton" class="start-button">Start</button>
+    </div>
+
+    <div id="gameOverScreen" class="game-over-screen hidden">
+        <h1 class="game-over-title">Time's Up!</h1>
+        <p class="final-score">Final Score: <span id="finalScore">0</span></p>
+        <button id="playAgainButton" class="start-button">Play Again</button>
+    </div>
+
+    <div id="score" class="score">Score: 0</div>
+    <div id="shot" class="shot">Bullets left: 5</div>
+    <div id="reload" class="reload"></div>
+    <div id="timer" class="timer">Time: 30</div>
+
+    <div class="background-layer"></div>
+    <div class="black-overlay" id="blackOverlay"></div>
+
+    <div class="crosshair" id="crosshair">
+        <div class="center-dot"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

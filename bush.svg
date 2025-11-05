@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <defs>
+    <linearGradient id="bushGradient" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#4CAF50"></stop>
+      <stop offset="100%" stop-color="#2E7D32"></stop>
+    </linearGradient>
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="b"></feGaussianBlur>
+      <feOffset in="b" dx="0" dy="6" result="o"></feOffset>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.25"></feFuncA>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="o"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- shadow under the bush -->
+  <ellipse cx="160" cy="170" rx="110" ry="18" fill="#000" opacity="0.12"></ellipse>
+
+  <!-- main bush shape -->
+  <path d="M40 140
+           C20 110, 30 60, 100 70
+           C120 30, 200 20, 230 70
+           C300 60, 300 120, 260 140
+           Z" fill="url(#bushGradient)" filter="url(#softShadow)"></path>
+</svg>
