@@ -58,7 +58,7 @@ function handleShoot(){
     if (elementUnderCrosshair && elementUnderCrosshair.classList && elementUnderCrosshair.classList.contains('target')) {
         const value = Number(elementUnderCrosshair.dataset.value) || 10;
         score += value;
-        new Audio("../Sounds/Team Fortress 2 Critical Hit sound effects.wav").play();
+        new Audio("Sounds/Team Fortress 2 Critical Hit sound effects.wav").play();
         elementUnderCrosshair.remove();
         document.getElementById('score').textContent = `Score: ${score}`;
     }
@@ -68,7 +68,7 @@ function handleShoot(){
     if (shot === 0) {
         reloading = true;
         //call reload sound
-        new Audio("../Sounds/Reloading.wav").play();
+        new Audio("Sounds/Reloading.wav").play();
 
         document.getElementById('shot').textContent = "Reloading...";
         document.getElementById('reload').textContent = `Reloading...`;
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mouseX = window.innerWidth / 2;
     mouseY = window.innerHeight / 2;
 
-    backgroundAudio = new Audio("../Sounds/Background.wav");
+    backgroundAudio = new Audio("Sounds/Background.wav");
     backgroundAudio.volume = 0.3;
     backgroundAudio.loop = true;
 
